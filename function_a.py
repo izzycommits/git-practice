@@ -1,21 +1,20 @@
 def most_common_value(number_list):
     """ returns the most common element of the list
     """
-
-    current_num = number_list[0]
-    count = 0
-
+    frequency_index = {}
+    max_frequency = -1
+    most_common_value = None
     for num in number_list:
+        if frequency_index.get(num):
+            frequency_index[num] += 1
+        else:
+            frequency_index[num] = 1
 
-        if number_list[num] != current_num:
+        if max_frequency < frequency_index[num]:
+            max_frequency = frequency_index[num]
+            most_common_value = num
 
-            current_num = number_list[num]
-            count = 1
-        
-        elif number_list[num] == current_num:
-            count += 1
-    
-    return current_num
+    return most_common_value
 
 
 if __name__ == "__main__":
